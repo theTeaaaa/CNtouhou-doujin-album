@@ -2,10 +2,280 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="refresh" content="0; url=2026%E4%B8%9C%E6%96%B9project%E5%9B%BD%E4%BA%BA%E4%B8%93%E8%BE%91%E4%B8%80%E8%A7%88.html">
-<title>跳转到 2026 东方project 国人专辑一览</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CNtouhou Doujin Album · 东方project 国人同人音乐档案</title>
+<meta name="description" content="CNtouhou Doujin Album，东方project 国人同人音乐专辑档案。选择年份进入对应专辑一览。">
+<meta name="theme-color" content="#070d24">
+<style>
+:root{
+  --bg:#070d24;
+  --ink:#eef2ff;
+  --soft:#c8d1ec;
+  --muted:#8f9bc4;
+  --gold:#f6c464;
+  --gold-soft:#f8e3b0;
+  --vermilion:#e4644d;
+  --line:rgba(148,168,224,.22);
+  --serif:"华文宋体","STSong","SimSun","Songti SC","Noto Serif SC",serif;
+  --sans:"Microsoft YaHei","PingFang SC","Noto Sans CJK SC",sans-serif;
+  --en:"Constantia","Georgia","Times New Roman",serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  min-height:100vh;overflow-x:hidden;background:var(--bg);color:var(--ink);
+  font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased;
+}
+a{color:inherit}
+::selection{background:rgba(246,196,100,.24);color:#fff}
+
+/* background */
+.night{
+  position:fixed;inset:0;z-index:-5;pointer-events:none;
+  background:
+    radial-gradient(ellipse 62% 50% at 78% 8%,rgba(246,196,100,.13),transparent 66%),
+    radial-gradient(ellipse 72% 58% at 18% 2%,rgba(92,118,218,.26),transparent 64%),
+    linear-gradient(180deg,#060b20 0%,#09122b 42%,#0d1737 72%,#081126 100%);
+}
+.grid{
+  position:fixed;inset:0;z-index:-4;pointer-events:none;opacity:.28;
+  background-image:
+    repeating-linear-gradient(0deg,rgba(150,175,235,.12) 0 1px,transparent 1px 48px),
+    repeating-linear-gradient(90deg,rgba(150,175,235,.10) 0 1px,transparent 1px 48px);
+  mask-image:linear-gradient(180deg,#000 0%,rgba(0,0,0,.55) 70%,transparent 100%);
+}
+.starfield{position:fixed;inset:0;z-index:-3;overflow:hidden;pointer-events:none}
+.star{position:absolute;width:2px;height:2px;border-radius:50%;background:#fff;opacity:.7;animation:twinkle var(--tw,4s) ease-in-out infinite}
+@keyframes twinkle{0%,100%{opacity:.18;transform:scale(.7)}50%{opacity:.9;transform:scale(1.15)}}
+.meteor{position:absolute;width:2px;height:2px;border-radius:50%;background:#fff;opacity:0;box-shadow:0 0 8px 2px rgba(255,255,255,.8);transform:rotate(34deg)}
+.meteor::before{content:"";position:absolute;top:50%;right:0;transform:translateY(-50%);width:var(--len,120px);height:1px;background:linear-gradient(270deg,rgba(255,255,255,.9),rgba(160,205,255,.32),transparent)}
+.meteor.run{animation:shoot var(--dur,7s) linear var(--delay,2s) infinite}
+@keyframes shoot{
+  0%{opacity:0;transform:translate(0,0) rotate(34deg)}
+  4%{opacity:.9}
+  18%{opacity:.9}
+  34%{opacity:0;transform:translate(520px,350px) rotate(34deg)}
+  100%{opacity:0;transform:translate(520px,350px) rotate(34deg)}
+}
+.moon{
+  position:fixed;z-index:-2;top:-90px;right:-44px;width:min(440px,36vw);height:auto;
+  opacity:.55;pointer-events:none;filter:drop-shadow(0 0 28px rgba(246,196,100,.06));
+}
+.torii{
+  position:fixed;z-index:-2;left:-38px;bottom:-30px;width:min(480px,40vw);
+  opacity:.15;pointer-events:none;filter:drop-shadow(0 0 24px rgba(228,100,77,.18));
+}
+
+/* shell */
+.shell{
+  position:relative;z-index:1;width:min(1280px,100%);min-height:100svh;margin:0 auto;
+  padding:30px 48px 24px;display:flex;flex-direction:column;
+}
+.topbar{display:flex;align-items:flex-start;justify-content:space-between;gap:24px}
+.wordmark{display:flex;align-items:baseline;gap:10px;text-decoration:none}
+.wordmark b{font-family:var(--en);font-size:23px;font-weight:400;letter-spacing:1.5px;color:var(--ink)}
+.wordmark span{font-size:9px;letter-spacing:.24em;color:var(--muted);text-transform:uppercase}
+.archive-tag{font-size:10px;letter-spacing:.24em;color:var(--muted);text-transform:uppercase;padding-top:7px;white-space:nowrap}
+.archive-tag b{color:var(--gold);font-weight:400}
+
+.main{
+  flex:1;display:grid;grid-template-columns:minmax(0,1.06fr) minmax(430px,.94fr);
+  align-items:center;gap:64px;padding:54px 0 38px;
+}
+.intro{max-width:620px;animation:rise .9s ease both}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.kicker{font-size:10px;letter-spacing:.28em;color:var(--gold);text-transform:uppercase;margin-bottom:18px}
+h1{font-family:var(--serif);font-weight:600;font-size:clamp(58px,7.6vw,102px);line-height:1.08;letter-spacing:2px;color:var(--ink)}
+h1 .small-line{display:block;margin-top:10px;font-size:clamp(28px,3.2vw,44px);letter-spacing:4px;color:var(--gold-soft);font-weight:500}
+.rule{width:136px;height:1px;background:linear-gradient(90deg,var(--gold),rgba(246,196,100,.08));margin:28px 0 22px}
+.lede{max-width:470px;font-size:14px;line-height:1.95;color:var(--soft)}
+.lede .dim{color:var(--muted)}
+.lede .accent{color:var(--gold-soft)}
+.intro-note{display:flex;align-items:center;gap:12px;margin-top:32px;font-size:10px;letter-spacing:.2em;color:var(--muted)}
+.intro-note::before{content:"";display:block;width:26px;height:1px;background:var(--vermilion)}
+
+.years{min-width:0;animation:rise .9s .12s ease both}
+.section-line{display:flex;align-items:center;justify-content:space-between;gap:16px;font-size:10px;letter-spacing:.22em;color:var(--muted);text-transform:uppercase;margin-bottom:16px}
+.section-line b{font-weight:400;color:var(--gold-soft)}
+.year-list{border-top:1px solid var(--line)}
+.year-row{
+  position:relative;display:grid;grid-template-columns:150px minmax(0,1fr) auto;align-items:center;gap:22px;
+  padding:27px 4px;border-bottom:1px solid var(--line);text-decoration:none;color:inherit;
+  transition:background .3s,padding .3s;isolation:isolate;
+}
+.year-row::before{
+  content:"";position:absolute;left:0;top:12px;bottom:12px;width:2px;background:var(--gold);
+  transform:scaleY(0);transform-origin:top;transition:transform .3s;z-index:-1;
+}
+.year-row.active:hover{background:linear-gradient(90deg,rgba(246,196,100,.075),rgba(246,196,100,0));padding-left:16px}
+.year-row.active:focus-visible{background:linear-gradient(90deg,rgba(246,196,100,.075),rgba(246,196,100,0));padding-left:16px;outline:1px solid rgba(246,196,100,.62);outline-offset:4px}
+.year-row.active:hover::before,.year-row.active:focus-visible::before{transform:scaleY(1)}
+.year-num{font-family:var(--en);font-size:62px;font-weight:400;line-height:.88;letter-spacing:-1px;color:var(--gold)}
+.year-title{font-family:var(--serif);font-size:23px;font-weight:600;line-height:1.35;color:var(--ink);margin-bottom:5px}
+.year-meta{font-size:11px;letter-spacing:.12em;color:var(--muted)}
+.year-action{display:flex;align-items:center;gap:9px;font-size:10px;letter-spacing:.2em;color:var(--gold-soft);white-space:nowrap}
+.year-action i{font-style:normal;font-family:var(--sans);font-size:19px;line-height:1;transition:transform .3s}
+.year-row.active:hover .year-action i{transform:translateX(5px)}
+.year-row.disabled{opacity:.54;cursor:default}
+.year-row.disabled .year-num{color:var(--muted)}
+.year-row.disabled .year-action{color:var(--muted)}
+.year-row.disabled .year-title{color:var(--soft)}
+
+.footer{
+  display:flex;align-items:center;justify-content:space-between;gap:22px;
+  border-top:1px solid var(--line);padding-top:15px;
+  font-size:9px;letter-spacing:.2em;color:var(--muted);text-transform:uppercase;
+}
+.footer .seal{font-family:var(--serif);font-size:12px;letter-spacing:3px;color:var(--gold-soft);text-transform:none}
+
+@media (max-width:980px){
+  .shell{padding:26px 30px 20px}
+  .main{grid-template-columns:1fr;gap:42px;padding:44px 0 30px}
+  .intro{max-width:680px}
+  .moon{width:360px;right:-70px;top:-70px;opacity:.5}
+  .torii{width:58vw;left:-8vw}
+  .years{max-width:680px}
+}
+@media (max-width:600px){
+  .shell{padding:22px 20px 18px}
+  .topbar{align-items:center}
+  .wordmark b{font-size:19px}
+  .wordmark span{display:none}
+  .archive-tag{font-size:8px;letter-spacing:.16em;padding-top:0}
+  .main{gap:34px;padding:38px 0 22px}
+  h1{font-size:clamp(48px,14vw,64px);letter-spacing:1px}
+  h1 .small-line{font-size:clamp(24px,7vw,30px);letter-spacing:2px;margin-top:8px}
+  .kicker{font-size:8px;letter-spacing:.18em;margin-bottom:14px}
+  .rule{margin:22px 0 18px}
+  .lede{font-size:13px;line-height:1.85}
+  .intro-note{margin-top:24px;font-size:9px}
+  .section-line{font-size:9px;letter-spacing:.14em}
+  .year-row{grid-template-columns:100px minmax(0,1fr) auto;gap:10px;padding:22px 2px}
+  .year-row.active:hover,.year-row.active:focus-visible{padding-left:10px}
+  .year-num{font-size:44px}
+  .year-title{font-size:19px}
+  .year-meta{font-size:9px;letter-spacing:.04em}
+  .year-action{font-size:9px;letter-spacing:.08em;gap:5px}
+  .year-action i{font-size:16px}
+  .footer{flex-direction:column;align-items:flex-start;gap:7px;font-size:8px;letter-spacing:.12em}
+  .moon{width:280px;right:-80px;top:-60px;opacity:.42}
+  .torii{width:78vw;left:-18vw;bottom:-20px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+  .meteor{display:none}
+}
+</style>
 </head>
 <body>
-<p>正在跳转到 <a href="2026%E4%B8%9C%E6%96%B9project%E5%9B%BD%E4%BA%BA%E4%B8%93%E8%BE%91%E4%B8%80%E8%A7%88.html">2026 东方project 国人专辑一览</a>…</p>
+<div class="night"></div>
+<div class="grid"></div>
+<div class="starfield" id="starfield"></div>
+<svg class="moon" viewBox="0 0 600 600" aria-hidden="true">
+  <defs>
+    <radialGradient id="moonFill" cx="35%" cy="35%" r="72%">
+      <stop offset="0%" stop-color="#f8e3b0" stop-opacity=".62"/>
+      <stop offset="58%" stop-color="#f6c464" stop-opacity=".24"/>
+      <stop offset="100%" stop-color="#f6c464" stop-opacity=".03"/>
+    </radialGradient>
+    <mask id="moonCut" maskUnits="userSpaceOnUse" x="0" y="0" width="600" height="600">
+      <rect width="600" height="600" fill="#fff"/>
+      <circle cx="382" cy="242" r="224" fill="#000"/>
+    </mask>
+  </defs>
+  <circle cx="300" cy="300" r="238" fill="url(#moonFill)" mask="url(#moonCut)"/>
+  <circle cx="300" cy="300" r="284" fill="none" stroke="#f6c464" stroke-opacity=".13" stroke-width="1.5"/>
+  <circle cx="300" cy="300" r="270" fill="none" stroke="#f6c464" stroke-opacity=".06" stroke-width="1"/>
+</svg>
+
+<svg class="torii" viewBox="0 0 320 200" fill="none" aria-hidden="true">
+  <path d="M18 38h284l-14 16H32Z" fill="rgba(228,100,77,.8)"/>
+  <path d="M45 56h230l-8 10H53Z" fill="rgba(180,60,48,.8)"/>
+  <path d="M82 66h22l10 116H88Z" fill="rgba(228,100,77,.8)"/>
+  <path d="M216 66h22l-6 116h-26Z" fill="rgba(228,100,77,.8)"/>
+  <path d="M60 182h200l-10 12H70Z" fill="rgba(228,100,77,.8)"/>
+</svg>
+
+<div class="shell">
+  <header class="topbar">
+    <a class="wordmark" href="./" aria-label="CNtouhou Doujin Album 首页">
+      <b>CNtouhou</b><span>Doujin Album</span>
+    </a>
+    <div class="archive-tag">Archive <b>/ 2026—</b></div>
+  </header>
+
+  <main class="main">
+    <section class="intro" aria-labelledby="page-title">
+      <div class="kicker">Chinese Touhou Doujin Album Archive</div>
+      <h1 id="page-title">东方project<span class="small-line">国人同人音乐档案</span></h1>
+      <div class="rule"></div>
+      <p class="lede">
+        收录国人东方同人音乐专辑的年度档案。<br>
+        <span class="dim">从封面、社团、曲目到简评与购买入口，</span><br>
+        按年份选择你想打开的那一册。
+      </p>
+      <div class="intro-note">选择年份  ·  SELECT A YEAR</div>
+    </section>
+
+    <section class="years" aria-labelledby="years-title">
+      <div class="section-line"><span id="years-title">年份索引</span><b>Year Index</b></div>
+      <div class="year-list">
+        <a class="year-row active" href="2026%E4%B8%9C%E6%96%B9project%E5%9B%BD%E4%BA%BA%E4%B8%93%E8%BE%91%E4%B8%80%E8%A7%88.html" aria-label="进入 2026 年东方project 国人专辑一览">
+          <div class="year-num">2026</div>
+          <div>
+            <div class="year-title">国人专辑一览</div>
+            <div class="year-meta">37 张专辑 · 8 个月</div>
+          </div>
+          <div class="year-action">进入档案 <i>→</i></div>
+        </a>
+        <div class="year-row disabled" aria-disabled="true">
+          <div class="year-num">2027</div>
+          <div>
+            <div class="year-title">筹备中</div>
+            <div class="year-meta">下一份档案正在路上</div>
+          </div>
+          <div class="year-action">敬请期待</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>未完待续 · To Be Continued</span>
+    <span class="seal">鄂音研</span>
+  </footer>
+</div>
+
+<script>
+(function(){
+  const sky = document.getElementById('starfield');
+  if(!sky) return;
+  const frag = document.createDocumentFragment();
+  for(let i=0;i<110;i++){
+    const s = document.createElement('span');
+    s.className = 'star';
+    const size = (Math.random()*1.7+0.7).toFixed(1);
+    s.style.left = (Math.random()*100).toFixed(2)+'%';
+    s.style.top = (Math.random()*92).toFixed(2)+'%';
+    s.style.width = size+'px';
+    s.style.height = size+'px';
+    s.style.setProperty('--tw',(Math.random()*4+2.5).toFixed(1)+'s');
+    s.style.animationDelay = (Math.random()*4).toFixed(1)+'s';
+    frag.appendChild(s);
+  }
+  for(let i=0;i<2;i++){
+    const m = document.createElement('span');
+    m.className = 'meteor';
+    m.style.left = (64+Math.random()*26).toFixed(1)+'%';
+    m.style.top = (Math.random()*32+3).toFixed(1)+'%';
+    m.style.setProperty('--len',(90+Math.random()*80).toFixed(0)+'px');
+    m.style.setProperty('--dur',(6+Math.random()*3).toFixed(1)+'s');
+    m.style.setProperty('--delay',(1+Math.random()*7).toFixed(1)+'s');
+    frag.appendChild(m);
+  }
+  sky.appendChild(frag);
+  sky.querySelectorAll('.meteor').forEach(m=>m.classList.add('run'));
+})();
+</script>
 </body>
 </html>
