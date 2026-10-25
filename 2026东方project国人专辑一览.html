@@ -750,6 +750,77 @@ body.pricing-on .album{cursor:pointer}
 .stat::after{display:none!important}
 .stat b{background:none!important;color:var(--gold)!important;-webkit-text-fill-color:var(--gold)!important}
 
+
+/* hero type unification */
+.hero-year{
+  font-family:var(--font-hero-cn)!important;font-weight:500!important;color:var(--ink)!important;
+}
+.hero-accent{
+  font-family:var(--font-hero-cn)!important;font-weight:500!important;color:var(--ink)!important;
+  background:none!important;-webkit-text-fill-color:var(--ink)!important;letter-spacing:.10em;
+}
+.hero-kicker{
+  font-family:var(--font-hero-sans)!important;font-size:11px!important;font-weight:400!important;
+  letter-spacing:.20em!important;color:var(--muted)!important;
+}
+.hero h1 small{
+  font-family:var(--font-hero-sans)!important;font-size:10px!important;font-weight:400!important;
+  letter-spacing:.20em!important;color:var(--muted)!important;
+}
+.hero-sub{
+  font-family:var(--font-hero-sans)!important;font-size:12px!important;letter-spacing:.12em!important;
+  color:var(--muted)!important;
+}
+.hero-sub .count{
+  font-family:var(--font-hero-cn)!important;font-weight:500!important;color:var(--ink)!important;
+  background:none!important;-webkit-text-fill-color:var(--ink)!important;font-size:2.4em!important;
+}
+.hero-cta{font-size:12px!important;letter-spacing:.14em!important;color:rgba(200,209,236,.88)!important}
+.hero-cta.ghost{color:var(--muted)!important}
+
+
+/* font-only change: restore previous colors, gradients, small type and dots */
+.hero-year{
+  font-family:var(--font-hero-cn)!important;font-weight:500!important;
+  color:rgba(248,227,176,.9)!important;
+}
+.hero-accent{
+  font-family:var(--font-hero-cn)!important;font-weight:500!important;
+  letter-spacing:.17em!important;color:transparent!important;
+  background:linear-gradient(100deg,#fff8e6 0%,#f8e3b0 26%,#f6c464 54%,#eaa07b 78%,#e4644d 100%)!important;
+  -webkit-background-clip:text!important;background-clip:text!important;
+  -webkit-text-fill-color:transparent!important;
+}
+.hero-kicker{
+  font-family:var(--font-hero-sans)!important;font-size:13px!important;font-weight:400!important;
+  letter-spacing:.30em!important;color:rgba(248,227,176,.88)!important;
+}
+.hero h1 small{
+  font-family:var(--font-hero-sans)!important;font-size:11px!important;font-weight:400!important;
+  letter-spacing:.36em!important;color:rgba(200,209,236,.62)!important;
+}
+.hero-sub{
+  font-family:var(--font-hero-sans)!important;font-size:16px!important;letter-spacing:.13em!important;
+  color:rgba(238,243,255,.88)!important;
+}
+.hero-sub .count{
+  font-family:var(--font-hero-cn)!important;font-weight:500!important;font-size:2.8em!important;
+  background:linear-gradient(120deg,#f8e3b0,#f6c464 55%,#e4644d)!important;
+  -webkit-background-clip:text!important;background-clip:text!important;
+  color:transparent!important;-webkit-text-fill-color:transparent!important;
+}
+.hero-cta{font-size:13px!important;letter-spacing:.18em!important;color:#fff6e2!important}
+.hero-cta.ghost{color:rgba(200,209,236,.84)!important}
+
+
+@media (max-width:600px){
+  .hero-kicker{font-size:11px!important;letter-spacing:.22em!important}
+  .hero h1 small{font-size:9px!important;letter-spacing:.28em!important}
+  .hero-sub{font-size:14px!important;letter-spacing:.05em!important}
+  .hero-sub .count{font-size:2.6em!important}
+  .hero-cta{font-size:12px!important;letter-spacing:.12em!important}
+}
+
 </style>
 </head>
 <body class="effects-on">

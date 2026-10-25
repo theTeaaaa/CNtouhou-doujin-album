@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CNtouhou Doujin Album · 东方project 国人同人音乐档案</title>
-<meta name="description" content="CNtouhou Doujin Album，东方project 国人同人音乐专辑档案。选择年份进入对应专辑一览。">
+<title>CNtouhou Doujin Album · 东方project 国人同人专辑一览</title>
+<meta name="description" content="CNtouhou Doujin Album，东方project 国人同人专辑一览。收录国人东方同人音乐专辑，可按年份查询。">
 <meta name="theme-color" content="#070d24">
 <style>
 :root{
@@ -165,28 +165,191 @@ h1 .small-line{display:block;margin-top:10px;font-size:clamp(28px,3.2vw,44px);le
   *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
   .meteor{display:none}
 }
+
+/* ===== landing refinement + opening curtain ===== */
+h1 .small-line{
+  font-family:var(--serif);color:var(--ink);font-weight:600;
+  font-size:clamp(32px,3.4vw,48px);letter-spacing:3px;
+}
+.lede{max-width:520px;text-wrap:pretty}
+.torii{width:min(1060px,74vw);left:-10vw;bottom:-240px;opacity:.21}
+.year-action{font-size:14px;letter-spacing:.14em}
+.year-action i{font-size:24px}
+.footer{text-transform:none;letter-spacing:.14em;font-size:10px}
+.footer .seal{font-size:13px}
+
+/* opening */
+body.intro-lock{overflow:hidden}
+.intro-screen{
+  position:fixed;inset:0;z-index:999;display:flex;align-items:center;justify-content:center;
+  background:
+    radial-gradient(ellipse 50% 44% at 50% 46%,rgba(246,196,100,.13),transparent 70%),
+    #040711;
+  cursor:pointer;animation:intro-lift .9s cubic-bezier(.77,0,.18,1) 1.45s forwards;
+}
+.intro-mark{text-align:center;animation:intro-mark 1.15s .12s both}
+.intro-brand{font-family:var(--en);font-size:clamp(44px,6vw,72px);font-weight:400;letter-spacing:2px;color:var(--ink)}
+.intro-kicker{margin-top:8px;font-size:9px;letter-spacing:.5em;color:var(--muted);text-transform:uppercase}
+.intro-line{width:0;height:1px;margin:24px auto 0;background:linear-gradient(90deg,transparent,var(--gold),transparent);animation:intro-line .85s .45s both}
+.intro-screen.skip{animation-delay:0s;animation-duration:.45s}
+body.intro-skip .intro,body.intro-skip .years{animation-delay:0s!important}
+@keyframes intro-mark{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@keyframes intro-line{to{width:132px}}
+@keyframes intro-lift{to{transform:translateY(-100%)}}
+.intro,.years{animation-delay:1.35s}
+
+@media (max-width:980px){
+  .torii{width:82vw;left:-16vw;bottom:-180px;opacity:.20}
+}
+@media (max-width:600px){
+  h1 .small-line{font-size:clamp(22px,6.6vw,28px);letter-spacing:1.5px;margin-top:8px}
+  .torii{width:145vw;left:-30vw;bottom:-70px;opacity:.18}
+  .year-action{font-size:12px;letter-spacing:.1em}
+  .year-action i{font-size:20px}
+  .intro-brand{font-size:48px}
+}
+@media (prefers-reduced-motion:reduce){
+  .intro-screen{display:none!important}
+  body.intro-lock{overflow:auto}
+  .intro,.years{animation-delay:0s!important}
+}
+
+
+@media (max-width:360px){
+  .main{padding-bottom:10px}
+  .year-row{grid-template-columns:90px minmax(0,1fr) auto;gap:8px}
+  .year-meta{font-size:8px;letter-spacing:0;white-space:nowrap}
+  .year-action{font-size:11px;letter-spacing:.06em;gap:4px}
+  .year-action i{font-size:18px}
+}
+
+
+/* ===== sudare / rolling curtain opening ===== */
+.intro-screen{background:none;animation:none;overflow:hidden}
+.intro-screen.skip{animation:none!important}
+.intro-curtain{
+  position:absolute;top:0;left:0;right:0;height:100%;z-index:0;
+  background:
+    linear-gradient(90deg,rgba(246,196,100,.16) 0 1px,transparent 1px calc(100% - 1px),rgba(246,196,100,.16) calc(100% - 1px)),
+    repeating-linear-gradient(180deg,#080d1b 0 18px,#111a32 18px 20px,#060a14 20px 36px);
+  box-shadow:inset 0 0 160px rgba(0,0,0,.62);
+  animation:curtain-roll 1.2s cubic-bezier(.76,0,.24,1) 1.35s forwards;
+  will-change:height;
+}
+.intro-curtain::before{
+  content:"";position:absolute;left:25%;top:0;bottom:0;width:1px;
+  background:rgba(246,196,100,.12);
+  box-shadow:25vw 0 0 rgba(246,196,100,.12),50vw 0 0 rgba(246,196,100,.12);
+  pointer-events:none;
+}
+.intro-curtain::after{
+  content:"";position:absolute;left:0;right:0;top:0;height:9px;
+  background:linear-gradient(180deg,#d7a35f,#4b2d21 62%,#0a0709);
+  box-shadow:0 2px 0 rgba(0,0,0,.45),0 0 18px rgba(246,196,100,.14);
+}
+.intro-roll{
+  position:absolute;left:9px;right:9px;bottom:-2px;height:26px;border-radius:13px;
+  background:linear-gradient(180deg,#08070b 0%,#2b1917 32%,#c18a50 48%,#f0c17c 50%,#2a1714 58%,#09070a 100%);
+  border:1px solid rgba(246,196,100,.32);
+  box-shadow:0 9px 24px rgba(0,0,0,.55),0 0 18px rgba(246,196,100,.10);
+}
+.intro-mark{position:relative;z-index:2;animation:intro-mark 1s .1s both,intro-mark-out .35s 1.05s forwards}
+.intro-brand{
+  font-family:"Noto Serif SC","Yu Mincho","MS Mincho","Songti SC",serif;
+  font-weight:500;font-size:clamp(42px,5.4vw,66px);letter-spacing:5px;color:#f3eddf;
+}
+.intro-screen.skip .intro-curtain{animation-delay:0s!important;animation-duration:.45s!important}
+.intro-screen.skip .intro-mark{animation:none;opacity:0}
+@keyframes curtain-roll{0%{height:100%;opacity:1}88%{opacity:1}100%{height:0;opacity:0}}
+@keyframes intro-mark-out{to{opacity:0;transform:translateY(-8px)}}
+.intro-screen.skip ~ .shell .intro,.intro-screen.skip ~ .shell .years{animation-delay:0s!important}
+.torii{width:min(1240px,84vw);left:-12vw;bottom:-260px;opacity:.21}
+@media (max-width:980px){.torii{width:95vw;left:-20vw;bottom:-200px;opacity:.19}}
+@media (max-width:600px){
+  .torii{width:165vw;left:-36vw;bottom:-80px;opacity:.18}
+  .intro-brand{font-size:46px;letter-spacing:3px}
+}
+
+
+/* final opening/torii tuning */
+.intro-brand{
+  font-family:"Georgia","Times New Roman",serif;font-weight:400;
+  font-size:clamp(44px,5.5vw,68px);letter-spacing:2px;color:#f3eddf;
+}
+.intro-curtain::before{
+  background:rgba(246,196,100,.06);
+  box-shadow:25vw 0 0 rgba(246,196,100,.06),50vw 0 0 rgba(246,196,100,.06);
+}
+.torii{width:min(1240px,84vw);left:-12vw;bottom:-180px;opacity:.21}
+@media (max-width:980px){.torii{width:95vw;left:-20vw;bottom:-160px;opacity:.19}}
+@media (max-width:600px){
+  .torii{width:165vw;left:-36vw;bottom:-50px;opacity:.18}
+  .intro-brand{font-size:46px;letter-spacing:2px}
+}
+
+
+.intro-curtain::before{display:none}
+.torii{opacity:.16}
+@media (max-width:980px){.torii{opacity:.15}}
+@media (max-width:600px){.torii{opacity:.14}}
+
+
+/* bamboo blind texture + pull handle */
+.intro-curtain{
+  background:
+    linear-gradient(90deg,rgba(246,196,100,.17) 0 1px,transparent 1px calc(100% - 1px),rgba(246,196,100,.17) calc(100% - 1px)),
+    repeating-linear-gradient(90deg,rgba(246,196,100,.022) 0 1px,transparent 1px 34px),
+    repeating-linear-gradient(176deg,
+      #070c19 0 13px,
+      #1a2848 13px 15px,
+      #0a1121 15px 26px,
+      #151f38 26px 27px,
+      #060a14 27px 34px);
+}
+.intro-handle{
+  position:absolute;left:50%;bottom:22px;width:28px;height:30px;transform:translateX(-50%);
+  z-index:3;pointer-events:none;animation:handle-pull .4s cubic-bezier(.3,0,.2,1) .95s both;
+}
+.intro-handle::before{
+  content:"";position:absolute;left:50%;top:13px;width:1px;height:27px;
+  background:linear-gradient(180deg,rgba(246,196,100,.75),rgba(246,196,100,.18));
+  transform:translateX(-50%);
+}
+.intro-handle::after{
+  content:"";position:absolute;left:50%;top:0;width:17px;height:17px;border-radius:50%;
+  border:2px solid #e2b46d;transform:translateX(-50%);
+  box-shadow:0 0 12px rgba(246,196,100,.20),inset 0 0 4px rgba(0,0,0,.45);
+}
+@keyframes handle-pull{
+  0%,100%{transform:translateX(-50%) translateY(0)}
+  48%{transform:translateX(-50%) translateY(15px)}
+}
+.intro-screen.skip .intro-handle{display:none}
+
+
+.intro-roll{animation:bar-pull .4s cubic-bezier(.3,0,.2,1) .95s both}
+@keyframes bar-pull{0%,100%{transform:translateY(0)}48%{transform:translateY(9px)}}
+.intro-screen.skip .intro-roll{animation:none}
+
 </style>
 </head>
 <body>
+<div class="intro-screen" id="introScreen" aria-hidden="true">
+  <div class="intro-curtain">
+    <div class="intro-roll"></div>
+    <div class="intro-handle" aria-hidden="true"></div>
+  </div>
+  <div class="intro-mark">
+    <div class="intro-brand">CNtouhou</div>
+    <div class="intro-kicker">Doujin Album</div>
+    <div class="intro-line"></div>
+  </div>
+</div>
+
 <div class="night"></div>
 <div class="grid"></div>
 <div class="starfield" id="starfield"></div>
-<svg class="moon" viewBox="0 0 600 600" aria-hidden="true">
-  <defs>
-    <radialGradient id="moonFill" cx="35%" cy="35%" r="72%">
-      <stop offset="0%" stop-color="#f8e3b0" stop-opacity=".62"/>
-      <stop offset="58%" stop-color="#f6c464" stop-opacity=".24"/>
-      <stop offset="100%" stop-color="#f6c464" stop-opacity=".03"/>
-    </radialGradient>
-    <mask id="moonCut" maskUnits="userSpaceOnUse" x="0" y="0" width="600" height="600">
-      <rect width="600" height="600" fill="#fff"/>
-      <circle cx="382" cy="242" r="224" fill="#000"/>
-    </mask>
-  </defs>
-  <circle cx="300" cy="300" r="238" fill="url(#moonFill)" mask="url(#moonCut)"/>
-  <circle cx="300" cy="300" r="284" fill="none" stroke="#f6c464" stroke-opacity=".13" stroke-width="1.5"/>
-  <circle cx="300" cy="300" r="270" fill="none" stroke="#f6c464" stroke-opacity=".06" stroke-width="1"/>
-</svg>
+
 
 <svg class="torii" viewBox="0 0 320 200" fill="none" aria-hidden="true">
   <path d="M18 38h284l-14 16H32Z" fill="rgba(228,100,77,.8)"/>
@@ -207,14 +370,9 @@ h1 .small-line{display:block;margin-top:10px;font-size:clamp(28px,3.2vw,44px);le
   <main class="main">
     <section class="intro" aria-labelledby="page-title">
       <div class="kicker">Chinese Touhou Doujin Album Archive</div>
-      <h1 id="page-title">东方project<span class="small-line">国人同人音乐档案</span></h1>
+      <h1 id="page-title">东方project<span class="small-line">国人同人专辑一览</span></h1>
       <div class="rule"></div>
-      <p class="lede">
-        收录国人东方同人音乐专辑的年度档案。<br>
-        <span class="dim">从封面、社团、曲目到简评与购买入口，</span><br>
-        按年份选择你想打开的那一册。
-      </p>
-      <div class="intro-note">选择年份  ·  SELECT A YEAR</div>
+      <p class="lede">本网站收录国人东方同人音乐专辑。包括封面、社团、简评与价格计算，<br>请按年份选择您想要查询的年份。</p>
     </section>
 
     <section class="years" aria-labelledby="years-title">
@@ -223,8 +381,7 @@ h1 .small-line{display:block;margin-top:10px;font-size:clamp(28px,3.2vw,44px);le
         <a class="year-row active" href="2026%E4%B8%9C%E6%96%B9project%E5%9B%BD%E4%BA%BA%E4%B8%93%E8%BE%91%E4%B8%80%E8%A7%88.html" aria-label="进入 2026 年东方project 国人专辑一览">
           <div class="year-num">2026</div>
           <div>
-            <div class="year-title">国人专辑一览</div>
-            <div class="year-meta">38 张专辑 · 8 个月</div>
+            <div class="year-meta">更新中……</div>
           </div>
           <div class="year-action">进入档案 <i>→</i></div>
         </a>
@@ -241,7 +398,7 @@ h1 .small-line{display:block;margin-top:10px;font-size:clamp(28px,3.2vw,44px);le
   </main>
 
   <footer class="footer">
-    <span>未完待续 · To Be Continued</span>
+    <span>持续维护更新中……</span>
     <span class="seal">鄂音研</span>
   </footer>
 </div>
@@ -276,6 +433,31 @@ h1 .small-line{display:block;margin-top:10px;font-size:clamp(28px,3.2vw,44px);le
   sky.appendChild(frag);
   sky.querySelectorAll('.meteor').forEach(m=>m.classList.add('run'));
 })();
+
+// 开幕动画：自动升起，点击可跳过
+(function(){
+  const intro = document.getElementById('introScreen');
+  if(!intro) return;
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce){ intro.remove(); return; }
+  let finished = false;
+  document.body.classList.add('intro-lock');
+  const finish = (skip) => {
+    if(finished) return;
+    finished = true;
+    document.body.classList.remove('intro-lock');
+    if(skip){
+      document.body.classList.add('intro-skip');
+      intro.classList.add('skip');
+      window.setTimeout(() => intro.remove(), 480);
+    } else {
+      intro.remove();
+    }
+  };
+  intro.addEventListener('click', () => finish(true));
+  window.setTimeout(() => finish(false), 2650);
+})();
+
 </script>
 </body>
 </html>
