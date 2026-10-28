@@ -1097,6 +1097,36 @@ body.hero-ready .hero-anim{opacity:1!important;transition:none!important}
   .pi-year{top:57%!important;font-size:clamp(48px,13vw,58px)!important;letter-spacing:.10em!important}
 }
 
+
+/* soften the hero-to-albums boundary */
+.hero::before{
+  -webkit-mask-image:linear-gradient(180deg,#000 0%,#000 58%,rgba(0,0,0,.72) 78%,transparent 100%);
+  mask-image:linear-gradient(180deg,#000 0%,#000 58%,rgba(0,0,0,.72) 78%,transparent 100%);
+}
+/* intro performance: static stars, lighter text, pause page background animation */
+.page-intro{contain:layout paint}
+.pi-star{animation:none!important;will-change:auto!important}
+body.page-intro-lock .star,
+body.page-intro-lock .meteor,
+body.page-intro-lock .pixel-cloud,
+body.page-intro-lock .hero-scroll svg{animation-play-state:paused!important}
+.pi-welcome,.pi-year{filter:none!important}
+@keyframes pi-ds-in{
+  from{opacity:0;transform:translate(-50%,-50%) translateY(10px)}
+  to{opacity:1;transform:translate(-50%,-50%)}
+}
+.pi-petal{will-change:transform,opacity}
+@keyframes pi-petal{
+  0%{opacity:0;transform:translate3d(0,0,0) rotate(0)}
+  12%{opacity:var(--po,.82)}
+  55%{transform:translate3d(var(--dx,20px),-54vh,0) rotate(var(--rot,270deg))}
+  100%{opacity:0;transform:translate3d(var(--dx2,-24px),-112vh,0) rotate(calc(var(--rot,270deg) + 160deg))}
+}
+.pi-shrine{width:min(330px,34vw)!important}
+@media (max-width:640px){
+  .pi-shrine{width:56vw!important;filter:none!important}
+}
+
 </style>
 </head>
 <body class="effects-on">
@@ -1108,34 +1138,43 @@ body.hero-ready .hero-anim{opacity:1!important;transition:none!important}
   <svg class="pi-cloud pc3" viewBox="0 0 180 90" shape-rendering="crispEdges" aria-hidden="true"><g fill="rgba(210,222,248,.14)"><rect x="32" y="12" width="104" height="12"/><rect x="12" y="24" width="150" height="14"/><rect x="42" y="38" width="90" height="12"/></g></svg>
   <div class="pi-horizon"></div>
   <div class="pi-ground"></div>
-  <svg class="pi-shrine" viewBox="0 0 300 230" shape-rendering="crispEdges" aria-hidden="true">
+  <svg class="pi-shrine" viewBox="0 0 320 250" shape-rendering="crispEdges" aria-hidden="true">
     <g fill="#2b1118">
-      <rect x="30" y="18" width="240" height="12"/>
-      <rect x="48" y="30" width="204" height="10"/>
-      <rect x="18" y="40" width="264" height="10"/>
-      <rect x="36" y="50" width="228" height="8"/>
-      <rect x="64" y="58" width="16" height="126"/>
-      <rect x="220" y="58" width="16" height="126"/>
-      <rect x="132" y="58" width="20" height="126"/>
-      <rect x="48" y="76" width="204" height="10"/>
-      <rect x="92" y="96" width="116" height="88"/>
-      <rect x="52" y="184" width="196" height="10"/>
-      <rect x="30" y="194" width="240" height="10"/>
-      <rect x="10" y="204" width="280" height="12"/>
+      <rect x="138" y="12" width="44" height="6"/>
+      <rect x="112" y="18" width="96" height="7"/>
+      <rect x="84" y="25" width="152" height="8"/>
+      <rect x="54" y="33" width="212" height="8"/>
+      <rect x="26" y="41" width="268" height="9"/>
+      <rect x="8" y="50" width="304" height="8"/>
+      <rect x="24" y="58" width="272" height="6"/>
+      <rect x="26" y="37" width="12" height="12"/>
+      <rect x="282" y="37" width="12" height="12"/>
+      <rect x="68" y="78" width="14" height="98"/>
+      <rect x="238" y="78" width="14" height="98"/>
+      <rect x="110" y="78" width="8" height="88"/>
+      <rect x="202" y="78" width="8" height="88"/>
+      <rect x="82" y="90" width="156" height="82"/>
+      <rect x="54" y="176" width="212" height="8"/>
+      <rect x="36" y="184" width="248" height="8"/>
+      <rect x="16" y="192" width="288" height="12"/>
     </g>
     <g fill="#d6a05c">
-      <rect x="124" y="104" width="52" height="8"/>
-      <rect x="142" y="112" width="16" height="54"/>
-      <rect x="74" y="66" width="4" height="116"/>
-      <rect x="222" y="66" width="4" height="116"/>
-      <rect x="106" y="86" width="6" height="6"/>
-      <rect x="188" y="86" width="6" height="6"/>
-      <rect x="60" y="170" width="12" height="4"/>
-      <rect x="228" y="170" width="12" height="4"/>
+      <rect x="54" y="33" width="212" height="3"/>
+      <rect x="26" y="41" width="268" height="3"/>
+      <rect x="8" y="50" width="304" height="3"/>
+      <rect x="146" y="18" width="28" height="6"/>
+      <rect x="130" y="106" width="60" height="62"/>
+      <rect x="158" y="106" width="4" height="62" fill="#2b1118"/>
+      <rect x="84" y="94" width="10" height="22"/>
+      <rect x="226" y="94" width="10" height="22"/>
+      <rect x="87" y="98" width="4" height="12" fill="#f0c17c"/>
+      <rect x="229" y="98" width="4" height="12" fill="#f0c17c"/>
+      <rect x="118" y="84" width="84" height="3"/>
+      <rect x="158" y="87" width="4" height="10"/>
     </g>
-    <g fill="#7b4a31"><rect x="48" y="180" width="204" height="4"/></g>
+    <g fill="#7b4a31"><rect x="54" y="172" width="212" height="4"/></g>
   </svg>
-  <div class="pi-petals"><i class="pi-petal" style="--x:8%;--d:3.1s;--delay:.25s;--s:9px"></i><i class="pi-petal" style="--x:18%;--d:3.8s;--delay:.55s;--s:8px"></i><i class="pi-petal" style="--x:27%;--d:3.4s;--delay:.15s;--s:10px"></i><i class="pi-petal" style="--x:36%;--d:4.1s;--delay:.75s;--s:8px"></i><i class="pi-petal" style="--x:44%;--d:3.2s;--delay:.4s;--s:9px"></i><i class="pi-petal" style="--x:53%;--d:3.7s;--delay:.8s;--s:8px"></i><i class="pi-petal" style="--x:61%;--d:3.0s;--delay:.3s;--s:10px"></i><i class="pi-petal" style="--x:69%;--d:4.0s;--delay:.6s;--s:8px"></i><i class="pi-petal" style="--x:77%;--d:3.3s;--delay:.2s;--s:9px"></i><i class="pi-petal" style="--x:86%;--d:3.9s;--delay:.7s;--s:8px"></i><i class="pi-petal" style="--x:93%;--d:3.5s;--delay:.45s;--s:9px"></i><i class="pi-petal" style="--x:15%;--d:4.2s;--delay:.9s;--s:7px"></i></div>
+  <div class="pi-petals" id="piPetals"></div>
 </div>
 
 <div class="night-bg"></div>
@@ -1250,7 +1289,7 @@ body.hero-ready .hero-anim{opacity:1!important;transition:none!important}
 
 <footer class="footer">
   <div class="footer-inner">
-    <div class="footer-title">持续更新维护中……</div>
+    <div class="footer-title">持续更新中</div>
     <div class="footer-line"></div>
     <p class="footer-table-link"><a href="https://docs.qq.com/sheet/DWG95eHhTZGNpS0Rn?tab=BB08J2" target="_blank" rel="noopener">点击此处可查看在线汇总表格</a></p>
     <div class="footer-note">资料来源：dizzylab 专辑页 · Bilibili XFD 试听 · 数据整理自公开信息</div>
@@ -2341,19 +2380,36 @@ updateStats();
   const intro=document.getElementById('pageIntro');
   if(!intro) return;
   if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){ intro.remove(); return; }
+  const mobile=window.matchMedia('(max-width:640px)').matches;
   const sky=document.getElementById('piSky');
   if(sky){
-    for(let i=0;i<72;i++){
+    const count=mobile?26:44;
+    for(let i=0;i<count;i++){
       const st=document.createElement('span');
       st.className='pi-star';
-      const size=(Math.random()*1.5+.55).toFixed(2);
+      const size=(Math.random()*1.35+.5).toFixed(2);
       st.style.left=(Math.random()*100).toFixed(2)+'%';
       st.style.top=(Math.random()*68).toFixed(2)+'%';
       st.style.width=size+'px'; st.style.height=size+'px';
-      st.style.opacity=(Math.random()*.55+.22).toFixed(2);
-      st.style.setProperty('--tw',(Math.random()*3.2+2.2).toFixed(2)+'s');
-      st.style.setProperty('--td',(Math.random()*3).toFixed(2)+'s');
+      st.style.opacity=(Math.random()*.55+.16).toFixed(2);
       sky.appendChild(st);
+    }
+  }
+  const petals=document.getElementById('piPetals');
+  if(petals){
+    const count=mobile?7:10;
+    for(let i=0;i<count;i++){
+      const el=document.createElement('i');
+      el.className='pi-petal';
+      el.style.setProperty('--x',(Math.random()*92+4).toFixed(2)+'%');
+      el.style.setProperty('--s',(Math.random()*4+7).toFixed(0)+'px');
+      el.style.setProperty('--d',(Math.random()*1.6+2.6).toFixed(2)+'s');
+      el.style.setProperty('--delay',(Math.random()*.85+.2).toFixed(2)+'s');
+      el.style.setProperty('--dx',(Math.random()*80-40).toFixed(0)+'px');
+      el.style.setProperty('--dx2',(Math.random()*60-30).toFixed(0)+'px');
+      el.style.setProperty('--rot',(Math.random()*260+140).toFixed(0)+'deg');
+      el.style.setProperty('--po',(Math.random()*.35+.55).toFixed(2));
+      petals.appendChild(el);
     }
   }
   document.body.classList.add('page-intro-lock');
